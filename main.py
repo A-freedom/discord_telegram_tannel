@@ -3,13 +3,13 @@ import asyncio
 
 from DiscordAPI import DiscordAPI
 from TelegramAPI import TelegramAPI
-from constance import *
+from secrets import *
 
 discord_api = DiscordAPI(telegram_instance=None)
 telegram_api = TelegramAPI(discord_instance=discord_api)
 
 # Set the TelegramAPI instance in the DiscordAPI instance
-discord_api.telegram = telegram_api
+discord_api.telegram_instance = telegram_api
 
 
 async def start_bot():

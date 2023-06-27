@@ -1,6 +1,6 @@
 from telethon.sync import TelegramClient, events
 
-from constance import *
+from secrets import *
 
 # Configure your API credentials
 api_id = telegram_api_id_str
@@ -13,7 +13,7 @@ client.start()
 
 
 # Define an event handler for new messages
-@client.on(events.NewMessage(chats=telegram_channel_str))
+@client.on(events.NewMessage(chats=telegram_channel_int))
 async def handle_new_message(event):
     message = event.message
     signed_name = get_signed_name(message)
