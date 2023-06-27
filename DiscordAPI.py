@@ -33,12 +33,10 @@ class DiscordAPI:
                 display_name = message.author.display_name
                 response = f'{display_name}\n--------------------\n{content}'
 
-                # if download_file_path:
-                # await message.channel.send(response, file=discord.File(download_file_path))
-                await self.telegram_instance.send_message_to_channel(response,download_file_path)
-                # move_files_up_and_remove_folder(file_path)
-                # else:
-                #     await message.channel.send(response)
+
+                # await self.telegram_instance.send_message_to_channel(response,download_file_path)
+                move_files_up_and_remove_folder(file_path)
+
 
         @self.client.event
         async def on_error(event, *args, **kwargs):
