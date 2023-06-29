@@ -14,9 +14,9 @@ def get_file_paths(folder_path):
 
 
 def move_files_up_and_remove_folder(folder_path):
+    move_to_path = None
     if folder_path:
         parent_path = path.dirname(folder_path)
-        path_list = []
         for file_name in listdir(folder_path):
             if path.exists(path.join(parent_path, file_name)):
                 move_to_path = get_unique_filename(path.join(parent_path, file_name))
@@ -24,11 +24,18 @@ def move_files_up_and_remove_folder(folder_path):
                 move_to_path = path.join(parent_path, file_name)
 
             file_path = path.join(folder_path, file_name)
-            path_list.append(move_to_path)
             shutil.move(file_path, move_to_path)
 
         rmdir(folder_path)
-        return path_list
+    # I wrote the code above with the assumption that move_to_path can't be None value
+    return move_to_path
+
+
+# def move_files_up_and_remove_folder(folder_paths):
+#     out_file_paths = []
+#     for folder_path in folder_paths:
+#         out_file_paths.append(move_file_up_and_remove_folder(folder_path))
+#     return out_file_paths
 
 
 def get_unique_filename(file_path):
